@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Снежная сфера 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="sky" aria-hidden="true"></canvas>
+    <div class="ambient" aria-hidden="true"></div>
+
+    <main class="scene">
+      <header class="hero">
+        <div class="badge">2026</div>
+        <h1>Снежная сфера желаний</h1>
+        <p class="subtitle">
+          Потряси сферу или нажми на нее и получи персональное пожелание на 2026 год.
+        </p>
+      </header>
+
+      <section class="content">
+        <div class="orb-wrap">
+          <button id="orb" class="orb" type="button" aria-label="Получить пожелание">
+            <span class="orb-core"></span>
+            <span class="orb-shine"></span>
+            <span class="orb-glint"></span>
+            <div class="orb-message" aria-live="polite" role="status">
+              <span class="orb-message-title">Пожелание 2026</span>
+              <span id="wishText" class="orb-message-text"></span>
+            </div>
+          </button>
+          <div class="orb-base"></div>
+          <div class="orb-instructions" id="shakeHint">Потряси шар мышью или смартфон</div>
+          <div class="controls">
+            <button id="wishBtn" class="cta" type="button">Сотворить пожелание</button>
+            <button id="shakeBtn" class="ghost" type="button">Потрясти</button>
+          </div>
+        </div>
+
+        <div class="message-card" id="messageCard">
+          <div class="message-title">Как это работает</div>
+          <p class="message-copy">
+            Каждое пожелание собирается из 8000+ сочетаний. Нажми на шар или
+            встряхни, чтобы получить новое.
+          </p>
+          <div class="message-meta">
+            <span id="wishCount"></span>
+            <span>Можно нажимать бесконечно</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>С любовью к твоему 2026 - пусть он будет мягким и сильным.</span>
+        <span class="footer-note">Подсказка: нажми пробел для быстрого встряхивания.</span>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
