@@ -5,12 +5,15 @@ const orb = document.getElementById('orb');
 const wishBtn = document.getElementById('wishBtn');
 const shakeBtn = document.getElementById('shakeBtn');
 const shakeHint = document.getElementById('shakeHint');
+const orbMessage = document.querySelector('.orb-message');
 
 const predictions = buildPredictions();
 let pool = shuffle([...predictions]);
 let cursor = 0;
 let lastWishTime = 0;
 let wishSwapTimeout = null;
+
+wishCount.textContent = `Предсказаний: ${predictions.length.toLocaleString('ru-RU')}`;
 
 const motionSupported = typeof DeviceMotionEvent !== 'undefined';
 shakeHint.textContent = motionSupported
@@ -61,7 +64,13 @@ function triggerWish() {
     return;
   }
   lastWishTime = now;
-  swapWish(nextWish());
+  const wish = nextWish();
+  if (orbMessage && orbMessage.classList.contains('is-hidden')) {
+    swapWish(wish, true);
+    orbMessage.classList.remove('is-hidden');
+  } else {
+    swapWish(wish);
+  }
   animateCard();
   animateOrb();
   enableMotion();
@@ -353,6 +362,3 @@ window.addEventListener('resize', resizeCanvas);
 
 resizeCanvas();
 requestAnimationFrame(animateSky);
-requestAnimationFrame(() => {
-  swapWish(nextWish(), true);
-});
